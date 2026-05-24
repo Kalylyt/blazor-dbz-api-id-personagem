@@ -1,0 +1,62 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+@using BlazorDragonBallApi.Models
+@inject HttpClient Http
+
+<h1>Dragon Ball API</h1>
+
+<input type="number" @bind="characterId" />
+
+<button @onclick="BuscarPersonagem">
+    Buscar
+</button>
+
+@if (character != null)
+{
+    <hr />
+
+    <h3>Nome:</h3>
+    <p>@character.Name</p>
+
+    <h3>Planeta:</h3>
+    <p>@character.OriginPlanet?.Name</p>
+
+    <h3>Transformações:</h3>
+
+    @if (character.Transformations != null &&
+         character.Transformations.Count > 0)
+    {
+        <ul>
+            @foreach (var t in character.Transformations)
+            {
+                <li>@t.Name</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Sem transformações</p>
+    }
+}
+
+@code {
+
+    int characterId;
+
+    Character? character;
+
+    async Task BuscarPersonagem()
+    {
+        try
+        {
+            var url = $"https://dragonball-api.com/api/characters/{characterId}";
+
+            character = await Http.GetFromJsonAsync<Character>(url);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}

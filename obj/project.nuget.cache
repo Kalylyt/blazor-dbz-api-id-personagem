@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "byVPn2H3liM=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Pichau\\Desktop\\BlazorDragonBallApi\\BlazorDragonBallApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.3\\microsoft.aspnetcore.app.internal.assets.10.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
